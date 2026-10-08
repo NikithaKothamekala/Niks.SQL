@@ -1,0 +1,434 @@
+Yes 👍 I understand. You don't want separate notes scattered across messages.
+
+From now on, after **each completed topic**, I'll give you **one clean, copy-paste-ready GitHub note** containing everything important about that topic.
+
+For the **previous topics**, here is one combined note you can copy once:
+
+# SQL Interview Basics
+
+## 1. What is SQL?
+
+**SQL** stands for **Structured Query Language**.
+
+It is used to communicate with and manage data in relational databases.
+
+We can use SQL to:
+- Create database objects
+- Insert data
+- Retrieve data
+- Update data
+- Delete data
+- Manipulate data
+
+### Interview Answer
+
+> SQL stands for Structured Query Language. It is used to communicate with and manage data in relational databases. We can use SQL to create, retrieve, insert, update, and delete data.
+
+---
+
+## 2. DBMS vs RDBMS
+
+### DBMS
+
+**DBMS** stands for **Database Management System**.
+
+It is software used to store and manage data in a database.
+
+### RDBMS
+
+**RDBMS** stands for **Relational Database Management System**.
+
+It is a type of DBMS that stores data in tables and allows relationships between tables using keys such as Primary Key and Foreign Key.
+
+### Simple Difference
+
+| DBMS | RDBMS |
+|---|---|
+| Manages data in a database | Manages data using related tables |
+| Relationship between tables is not the main concept | Relationships between tables are important |
+| Basic database management | Uses relational model |
+
+### Interview Answer
+
+> DBMS is software used to store and manage data in a database. RDBMS is a type of DBMS that stores data in tables and establishes relationships between tables using keys.
+
+### 🧠 Trick
+
+**R in RDBMS = Relationship**
+
+---
+
+## 3. Primary Key
+
+A **Primary Key** is a column that uniquely identifies each row in a table.
+
+### Important Rules
+
+- Cannot contain duplicate values
+- Cannot contain NULL
+- A table can have only **one Primary Key constraint**
+- A Primary Key can contain multiple columns — this is called a **Composite Primary Key**
+
+### Example
+
+```sql
+CREATE TABLE Student (
+    student_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    age INT
+);
+```
+
+### Table
+
+| student_id | name | age |
+|---:|---|---:|
+| 101 | Ravi | 20 |
+| 102 | Arun | 21 |
+| 103 | Ravi | 19 |
+
+The `name` can repeat, but `student_id` cannot.
+
+### Interview Answer
+
+> A Primary Key is a column that uniquely identifies each row in a table. It does not allow duplicate or NULL values.
+
+### 🧠 Real-life Example
+
+Think of a **college roll number**.
+
+Each student has a unique roll number.
+
+**Primary Key = Identity of a row**
+
+---
+
+## 4. Foreign Key
+
+A **Foreign Key** is a column that references a Primary Key or another unique key in another table.
+
+It is used to establish a relationship between tables.
+
+### Example
+
+```sql
+CREATE TABLE Department (
+    dept_id INT PRIMARY KEY,
+    dept_name VARCHAR(50)
+);
+
+CREATE TABLE Student (
+    student_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    dept_id INT,
+    FOREIGN KEY (dept_id)
+        REFERENCES Department(dept_id)
+);
+```
+
+### Department
+
+| dept_id | dept_name |
+|---:|---|
+| 1 | CSE |
+| 2 | ECE |
+
+### Student
+
+| student_id | name | dept_id |
+|---:|---|---:|
+| 101 | Ravi | 1 |
+| 102 | Arun | 1 |
+| 103 | Kumar | 2 |
+
+Here:
+
+- `Department.dept_id` → Primary Key
+- `Student.dept_id` → Foreign Key
+
+Notice that `dept_id = 1` appears twice in Student.
+
+So **Foreign Keys can contain duplicate values**.
+
+### Interview Answer
+
+> A Foreign Key is a column that references a key in another table. It is used to establish a relationship between two tables.
+
+### 🧠 Trick
+
+**Primary Key → Who am I?**
+
+**Foreign Key → Which table am I connected to?**
+
+---
+
+## 5. Primary Key vs Foreign Key
+
+| Primary Key | Foreign Key |
+|---|---|
+| Identifies each row | Creates relationship between tables |
+| No duplicate values | Duplicate values are allowed |
+| Cannot be NULL | Can contain NULL unless NOT NULL is specified |
+| One Primary Key constraint per table | A table can have multiple Foreign Keys |
+
+### Interview Answer
+
+> A Primary Key uniquely identifies each row in a table, while a Foreign Key establishes a relationship between two tables by referencing a key in another table.
+
+---
+
+## 6. Constraints
+
+**Constraints are rules applied to columns to control the data stored in a table and maintain data integrity.**
+
+### Main SQL Constraints
+
+| Constraint | Purpose |
+|---|---|
+| PRIMARY KEY | Uniquely identifies each row |
+| FOREIGN KEY | Creates relationship between tables |
+| NOT NULL | Does not allow NULL |
+| UNIQUE | Does not allow duplicate values |
+| CHECK | Checks whether a condition is true |
+| DEFAULT | Provides a default value |
+
+### Example
+
+```sql
+CREATE TABLE Student (
+    id INT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) UNIQUE,
+    age INT CHECK (age >= 18),
+    city VARCHAR(30) DEFAULT 'Tirupati'
+);
+```
+
+### 🧠 Trick
+
+**Constraints = Rules for your data**
+
+---
+
+## 7. PRIMARY KEY vs UNIQUE
+
+Both prevent duplicate values, but they are not the same.
+
+```sql
+CREATE TABLE Student (
+    id INT PRIMARY KEY,
+    email VARCHAR(100) UNIQUE,
+    name VARCHAR(50)
+);
+```
+
+| PRIMARY KEY | UNIQUE |
+|---|---|
+| Uniquely identifies each row | Prevents duplicate values |
+| Only one Primary Key constraint | Multiple UNIQUE constraints can exist |
+| Cannot contain NULL | NULL handling depends on the database |
+| Main identity of the row | Used to enforce uniqueness |
+
+### Interview Answer
+
+> A Primary Key uniquely identifies each row and cannot contain NULL, while a UNIQUE constraint prevents duplicate values and can be used on multiple columns.
+
+### 🧠 Real-life Example
+
+**Primary Key → Student roll number**
+
+**UNIQUE → Email ID**
+
+---
+
+## 8. DELETE vs TRUNCATE vs DROP
+
+### DELETE
+
+Removes rows from a table.
+
+```sql
+DELETE FROM Student
+WHERE id = 101;
+```
+
+It can remove selected rows.
+
+The table structure remains.
+
+### TRUNCATE
+
+Removes **all rows** from a table.
+
+```sql
+TRUNCATE TABLE Student;
+```
+
+The table structure remains.
+
+### DROP
+
+Removes the **entire table**, including its structure and data.
+
+```sql
+DROP TABLE Student;
+```
+
+### Comparison
+
+| Command | Removes | Table remains? |
+|---|---|---|
+| DELETE | Selected/all rows | Yes |
+| TRUNCATE | All rows | Yes |
+| DROP | Entire table | No |
+
+### 🧠 Easy Trick
+
+**DELETE → Rows**
+
+**TRUNCATE → All rows**
+
+**DROP → Whole table**
+
+### Important
+
+To remove a column:
+
+```sql
+ALTER TABLE Student
+DROP COLUMN age;
+```
+
+---
+
+## 9. WHERE vs HAVING
+
+Both are used for filtering, but they work differently.
+
+### WHERE
+
+Filters **individual rows**.
+
+```sql
+SELECT *
+FROM Student
+WHERE age > 20;
+```
+
+### HAVING
+
+Filters **groups after GROUP BY**.
+
+```sql
+SELECT department, COUNT(*) AS total
+FROM Student
+GROUP BY department
+HAVING COUNT(*) > 2;
+```
+
+### Difference
+
+| WHERE | HAVING |
+|---|---|
+| Filters rows | Filters groups |
+| Used before grouping | Used after GROUP BY |
+| Commonly used with normal conditions | Commonly used with aggregate functions |
+
+### 🧠 Trick
+
+**WHERE → Rows**
+
+**HAVING → Groups**
+
+### Interview Answer
+
+> WHERE filters individual rows before grouping, while HAVING filters groups after GROUP BY.
+
+---
+
+## 10. WHERE vs ON in JOIN
+
+### ON
+
+Specifies **how two tables should be joined**.
+
+```sql
+SELECT s.name, d.department
+FROM Students s
+JOIN Departments d
+ON s.dept_id = d.dept_id;
+```
+
+### WHERE
+
+Filters the result.
+
+```sql
+SELECT s.name, d.department
+FROM Students s
+JOIN Departments d
+ON s.dept_id = d.dept_id
+WHERE d.department = 'CSE';
+```
+
+### 🧠 Trick
+
+**ON → How to connect**
+
+**WHERE → What to filter**
+
+### Interview Answer
+
+> ON specifies the condition for joining two tables, while WHERE filters rows from the result.
+
+---
+
+# Quick Revision 🔥
+
+| Concept | Remember |
+|---|---|
+| SQL | Language used to manage relational data |
+| DBMS | Manages database |
+| RDBMS | Uses related tables |
+| Primary Key | Unique identity |
+| Foreign Key | Connects tables |
+| Constraints | Rules for data |
+| UNIQUE | Prevents duplicates |
+| DELETE | Removes rows |
+| TRUNCATE | Removes all rows |
+| DROP | Removes entire table |
+| WHERE | Filters rows |
+| HAVING | Filters groups |
+| ON | Join condition |
+
+# 🧠 Super-Fast Interview Memory
+
+**PK → Identity**
+
+**FK → Relationship**
+
+**UNIQUE → No duplicates**
+
+**DELETE → Rows**
+
+**TRUNCATE → All rows**
+
+**DROP → Table**
+
+**WHERE → Rows**
+
+**HAVING → Groups**
+
+**ON → Join**
+
+---
+
+## 📌 GitHub Note Title
+
+**SQL Interview Basics — DBMS, Keys, Constraints & Filtering**
+
+These are the basic SQL concepts we completed so far.
+
+✅ **Topics completed — Add this entire note to your GitHub Notes.**
+
+From the **next topic onward**, I'll give you the **question first**, and once that topic is completed, I'll give you **one complete copy-paste note for that topic**.
