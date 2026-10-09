@@ -1,0 +1,144 @@
+Here you go, coder! 🔥 Complete RIGHT JOIN interview notes in one copyable block, ready for your GitHub.
+
+# 🟧 SQL RIGHT JOIN — Interview Notes
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## ⭐ 1. What is RIGHT JOIN?
+
+**RIGHT JOIN returns ALL rows from the right table and matching rows from the left table.**
+
+If a row in the right table has no match in the left table, SQL shows `NULL` for the left-table columns.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 💡 2. Real-Life Example
+
+Imagine a college with two tables.
+
+### 🟦 Students Table (Left Table)
+
+| student_id | name  | dept_id |
+| ---------- | ----- | ------- |
+| 101        | Ravi  | 1       |
+| 102        | Arun  | 2       |
+| 103        | Kumar | 4       |
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+### 🟨 Departments Table (Right Table)
+
+| dept_id | department |
+| ------- | ---------- |
+| 1       | CSE        |
+| 2       | ECE        |
+| 3       | IT         |
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 💻 3. SQL Query
+
+```
+SELECT s.name, d.department
+FROM Students s
+RIGHT JOIN Departments d
+ON s.dept_id = d.dept_id;
+```
+
+### 🔍 Explanation
+
+- `SELECT` → Chooses the columns to display.
+- `FROM Students s` → Students is the left table.
+- `RIGHT JOIN Departments d` → Departments is the right table.
+- `ON` → Matches rows using `dept_id`.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📊 4. Output
+
+| name | department |
+| ---- | ---------- |
+| Ravi | CSE        |
+| Arun | ECE        |
+| NULL | IT         |
+
+### 🤔 Why?
+
+- Ravi matches department 1 → CSE.
+- Arun matches department 2 → ECE.
+- IT has no matching student → `NULL` appears for the student name.
+- Kumar is not shown because RIGHT JOIN does not keep unmatched rows from the left table.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🧠 5. Memory Trick
+
+**RIGHT JOIN = ALL RIGHT + MATCHING LEFT 🟧**
+
+- Matching rows → Show data from both tables.
+- Unmatched right rows → Keep them; left-side columns become `NULL`.
+- Unmatched left rows → Exclude them.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## ⚠️ 6. Common Interview Question
+
+**Q: What happens when a right-table row has no match in the left table?**
+
+**Answer:** The row still appears in the result, and the left-table columns contain `NULL`.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🎯 7. Interview-Ready Answer
+
+> A RIGHT JOIN returns all rows from the right table and matching rows from the left table. If there is no match, the left-table columns contain NULL.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🔥 8. LEFT JOIN vs RIGHT JOIN
+
+| LEFT JOIN                              | RIGHT JOIN                            |
+| -------------------------------------- | ------------------------------------- |
+| Keeps all rows from the left table     | Keeps all rows from the right table   |
+| Unmatched right-side data becomes NULL | Unmatched left-side data becomes NULL |
+| Left table is preserved                | Right table is preserved              |
+
+### 🧠 Easy Trick
+
+- 🟩 `LEFT JOIN` → Keep everything on the left.
+- 🟧 `RIGHT JOIN` → Keep everything on the right.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🎯 9. Important Interview Tip
+
+You can often rewrite a RIGHT JOIN as a LEFT JOIN by **swapping the order of the tables**.
+
+For example:
+
+```
+SELECT s.name, d.department
+FROM Departments d
+LEFT JOIN Students s
+ON s.dept_id = d.dept_id;
+```
+
+This gives the same matching and unmatched-row behavior as the RIGHT JOIN example above.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 GitHub Note Title
+
+**SQL RIGHT JOIN — Examples, Output and Interview Questions**
+
+### 🚀 One-Line Revision
+
+**RIGHT JOIN = Keep everything from the right table.**
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ **TOPIC COMPLETED — Add this topic to your GitHub Notes! 📚**
+
+## ⚡ Next Rapid-Fire Question
+
+Question 17: What is a FULL OUTER JOIN in SQL? 👇
