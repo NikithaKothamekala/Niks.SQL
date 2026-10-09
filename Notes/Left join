@@ -1,0 +1,121 @@
+Yes, coder! 🔥 Here is the complete LEFT JOIN note in one single copyable block. Click the copy button and paste it directly into your GitHub Markdown file.
+
+# 🟩 SQL LEFT JOIN — Interview Notes
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## ⭐ 1. What is LEFT JOIN?
+
+**LEFT JOIN returns ALL rows from the left table and matching rows from the right table.**
+
+If a row has no match in the right table, SQL shows `NULL` for the right-table columns.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 💡 2. Real-Life Example
+
+Imagine a college with two tables.
+
+### 🟦 Students Table (Left Table)
+
+| student_id | name  | dept_id |
+| ---------- | ----- | ------- |
+| 101        | Ravi  | 1       |
+| 102        | Arun  | 2       |
+| 103        | Kumar | 4       |
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+### 🟨 Departments Table (Right Table)
+
+| dept_id | department |
+| ------- | ---------- |
+| 1       | CSE        |
+| 2       | ECE        |
+| 3       | IT         |
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 💻 3. SQL Query
+
+```
+SELECT s.name, d.department
+FROM Students s
+LEFT JOIN Departments d
+ON s.dept_id = d.dept_id;
+```
+
+### 🔍 Explanation
+
+- `SELECT` → Chooses the columns to display.
+- `FROM Students s` → Students is the left table.
+- `LEFT JOIN Departments d` → Joins the Departments table.
+- `ON` → Matches rows using `dept_id`.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📊 4. Output
+
+| name  | department |
+| ----- | ---------- |
+| Ravi  | CSE        |
+| Arun  | ECE        |
+| Kumar | NULL       |
+
+### 🤔 Why?
+
+- Ravi matches department 1 → CSE.
+- Arun matches department 2 → ECE.
+- Kumar has department 4, which does not exist in the Departments table → `NULL`.
+- IT is not shown because LEFT JOIN does not keep unmatched rows from the right table.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🧠 5. Memory Trick
+
+**LEFT JOIN = ALL LEFT + MATCHING RIGHT 🟩**
+
+- Matching rows → Show data from both tables.
+- Unmatched left rows → Keep them; right-side columns become `NULL`.
+- Unmatched right rows → Exclude them.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## ⚠️ 6. Common Interview Question
+
+**Q: What happens when a left-table row has no match in the right table?**
+
+**Answer:** The row still appears in the result, and the right-table columns contain `NULL`.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🎯 7. Interview-Ready Answer
+
+> A LEFT JOIN returns all rows from the left table and matching rows from the right table. If there is no match, the right-table columns contain NULL.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🔥 8. JOIN Quick Revision
+
+| JOIN Type       | Result                              |
+| --------------- | ----------------------------------- |
+| INNER JOIN      | Only matching rows                  |
+| LEFT JOIN       | All left rows + matching right rows |
+| RIGHT JOIN      | All right rows + matching left rows |
+| FULL OUTER JOIN | All rows from both tables           |
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 GitHub Note Title
+
+**SQL LEFT JOIN — Examples, Output and Interview Questions**
+
+### 🚀 One-Line Revision
+
+**LEFT JOIN = Keep everything from the left table.**
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ **TOPIC COMPLETED — Add this topic to your GitHub Notes! 📚**
+
+From now on, I'll put each completed topic's notes in one copyable block, with colorful headings, examples, tables, separators, memory tricks, and interview answers.
