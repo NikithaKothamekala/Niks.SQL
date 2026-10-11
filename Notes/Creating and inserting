@@ -1,0 +1,250 @@
+Coder! 💻🔥 Here are your complete, colourful, copy-ready GitHub notes for CREATE TABLE and INSERT INTO using the same `Students` table you created in MySQL.
+
+# 🟦 SQL CREATE TABLE & INSERT INTO — Interview Notes
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## ⭐ 1. What is CREATE TABLE?
+
+`CREATE TABLE` is used to **create a new table** in a database.
+
+A table contains columns and rows.
+
+💡 **Real-life example:** Creating a student register in a college to store student details.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 💻 2. CREATE TABLE Syntax
+
+```
+CREATE TABLE table_name (
+    column1 datatype,
+    column2 datatype,
+    column3 datatype
+);
+```
+
+### Example
+
+```
+CREATE TABLE Students (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    age INT,
+    marks INT
+);
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🔍 3. Understand Each Part
+
+| Code               | Meaning                           |
+| ------------------ | --------------------------------- |
+| `CREATE TABLE`     | Creates a new table               |
+| `Students`         | Table name                        |
+| `id INT`           | ID stores whole numbers           |
+| `PRIMARY KEY`      | Makes each ID unique and not NULL |
+| `name VARCHAR(50)` | Stores text up to 50 characters   |
+| `age INT`          | Stores age as a whole number      |
+| `marks INT`        | Stores marks as a whole number    |
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🧠 4. Important SQL Data Types
+
+| Data Type      | Used For          | Example        |
+| -------------- | ----------------- | -------------- |
+| `INT`          | Whole numbers     | `25`           |
+| `VARCHAR(50)`  | Text              | `'Ates'`       |
+| `CHAR(10)`     | Fixed-length text | `'ABC'`        |
+| `DECIMAL(5,2)` | Decimal numbers   | `95.50`        |
+| `DATE`         | Dates             | `'2026-10-11'` |
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## ⭐ 5. What is INSERT INTO?
+
+`INSERT INTO` is used to **add new rows of data to a table**.
+
+💡 Real-life example: Adding a new student's details to the college register.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 💻 6. Insert One Row
+
+### Syntax
+
+```
+INSERT INTO table_name
+VALUES (value1, value2, value3);
+```
+
+### Example
+
+```
+INSERT INTO Students
+VALUES (101, 'Ates', 33, 95);
+```
+
+### Output — Students Table
+
+| id  | name | age | marks |
+| --- | ---- | --- | ----- |
+| 101 | Ates | 33  | 95    |
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## ⭐ 7. Insert Multiple Rows
+
+You can insert multiple rows using a single query.
+
+```
+INSERT INTO Students
+VALUES
+(101, 'Ates', 33, 95),
+(102, 'Mercan', 23, 90),
+(103, 'Hazar', 30, 85),
+(104, 'Eylul', 25, 80),
+(105, 'Cemal', 31, 75),
+(106, 'Demet', 24, 70);
+```
+
+⚠️ Run this example only in an empty table, because the same IDs cannot be inserted again when `id` is the Primary Key.
+
+### 📊 Resulting Table
+
+| id  | name   | age | marks |
+| --- | ------ | --- | ----- |
+| 101 | Ates   | 33  | 95    |
+| 102 | Mercan | 23  | 90    |
+| 103 | Hazar  | 30  | 85    |
+| 104 | Eylul  | 25  | 80    |
+| 105 | Cemal  | 31  | 75    |
+| 106 | Demet  | 24  | 70    |
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## ⭐ 8. Insert Data into Specific Columns
+
+You can specify the column names explicitly.
+
+```
+INSERT INTO Students (id, name, age, marks)
+VALUES (107, 'Deniz', 22, 88);
+```
+
+**Why is this useful?**
+
+- Makes it clear which value belongs to which column.
+- You don't need to depend on remembering the table's column order.
+- You can omit columns that have a default value or allow `NULL`, when appropriate.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🔎 9. Check Your Table
+
+After inserting data, use `SELECT` to view it.
+
+```
+SELECT * FROM Students;
+```
+
+**Meaning:**
+
+- `SELECT` → Retrieve data.
+- `*` → All columns.
+- `FROM Students` → From the Students table.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## ⚠️ 10. Common Interview Mistakes
+
+**Mistake 1: Missing quotes around text**
+
+❌ Incorrect:
+
+```
+INSERT INTO Students
+VALUES (101, Ates, 33, 95);
+```
+
+✅ Correct:
+
+```
+INSERT INTO Students
+VALUES (101, 'Ates', 33, 95);
+```
+
+Text values need quotes.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+**Mistake 2: Adding extra parentheses**
+
+❌ Incorrect:
+
+```
+INSERT INTO Students
+VALUES ((101, 'Ates', 33, 95));
+```
+
+✅ Correct:
+
+```
+INSERT INTO Students
+VALUES (101, 'Ates', 33, 95);
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+**Mistake 3: Inserting a duplicate Primary Key**
+
+If ID `101` already exists, inserting another row with ID `101` causes a duplicate-key error.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🎯 11. Common Interview Questions
+
+**Q1. What is CREATE TABLE?**
+
+It is used to create a new table in a database.
+
+**Q2. What is INSERT INTO?**
+
+It is used to insert new rows into a table.
+
+**Q3. How do you insert multiple rows in one query?**
+
+Use `INSERT INTO` followed by multiple value sets separated by commas.
+
+**Q4. How do you display all records?**
+
+```
+SELECT * FROM Students;
+```
+
+**Q5. What is a Primary Key?**
+
+It uniquely identifies each row and cannot contain duplicate or NULL values.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🧠 12. Quick Memory Tricks
+
+- `CREATE TABLE` → Create the table 🏗️
+- `INSERT INTO` → Add rows ➕
+- `SELECT *` → Display all columns 👀
+- `PRIMARY KEY` → Unique identity 🔑
+- `INT` → Whole numbers 🔢
+- `VARCHAR` → Text 🔤
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 GitHub Note Title
+
+**SQL CREATE TABLE & INSERT INTO — Syntax, Examples and Interview Questions**
+
+✅ **TOPIC COMPLETED — Add this topic to your GitHub Notes! 📚**
+
+Correct the duplicate INSERT examplesAdd a complete runnable SQL script
