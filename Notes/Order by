@@ -1,0 +1,65 @@
+# 🟦 SQL ORDER BY — Interview Notes
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## ⭐ 1. What is ORDER BY?
+
+`ORDER BY` is used to **sort query results** based on one or more columns.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 💻 2. Sort from Highest to Lowest
+
+```sql
+SELECT * FROM Students
+ORDER BY marks DESC;
+```
+
+**Meaning:** Students with the highest marks appear first.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 💻 3. Sort from Lowest to Highest
+
+```sql
+SELECT * FROM Students
+ORDER BY marks ASC;
+```
+
+**Meaning:** Students with the lowest marks appear first.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📊 4. Example Output — ASC
+
+| name | marks |
+|---|---:|
+| Demet | 70 |
+| Cemal | 75 |
+| Eylul | 80 |
+| Hazar | 85 |
+| Mercan | 90 |
+| Ates | 95 |
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🧠 5. Memory Trick
+
+- `ASC` → Small to big 🔼
+- `DESC` → Big to small 🔽
+
+**Important:** If you don't specify `ASC` or `DESC`, SQL uses `ASC` by default.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🎯 6. Interview Answer
+
+> ORDER BY is used to sort query results in ascending or descending order.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📌 GitHub Note Title
+
+**SQL ORDER BY — Sorting Query Results**
+
+✅ **TOPIC COMPLETED — Add this topic to your GitHub Notes! 📚**
